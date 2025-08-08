@@ -85,8 +85,7 @@ body{
 }
 
 nav{
-    position: fixed;
-    isolation: isolate;
+    position: relative;
     top: 0;
     width: 100%;
     z-index: 9;
@@ -98,7 +97,6 @@ nav{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: var(--primary-color);
 }
 
 .nav-logo .logo{
@@ -118,12 +116,14 @@ nav{
     left: 0;
     width: 100%;
     padding: 2rem;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     gap: 2rem;
     background-color: var(--primary-color);
+    transform: translateY(-200%); /* hide above screen */
     transition: transform 0.5s;
     z-index: -1;
 }
@@ -147,7 +147,6 @@ nav{
 }
 
 header{
-    margin-top: 5rem;
     padding-inline: 1rem;
     position: relative;
     isolation: isolate;
@@ -158,7 +157,7 @@ header::before{
     position: absolute;
     content: "";
     height: 100%;
-    width: calc(100% - 2rem);
+    width: 100%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -166,7 +165,6 @@ header::before{
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
-    border-radius: 3rem;
     z-index: -1;
 }
 
@@ -182,7 +180,7 @@ header::before{
     margin-bottom: 5px;
     font-size: 1rem;
     font-weight: 600;
-    color: var(--text-dark);
+    color: var(--white);
     text-align: center;
 }
 
@@ -190,7 +188,7 @@ header::before{
     margin-bottom: 2rem;
     font-size: 3.5rem;
     font-weight: 600;
-    color: var(--text-dark);
+    color: var(--white);
     text-align: center;
 }
 
@@ -235,7 +233,12 @@ header::before{
     gap: 2rem 1rem;
 }
 
+.destination-card {
+    height: 500px;
+}
+
 .destination-card img {
+    height: 90%;
     border-radius: 1.5rem;
     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
 }
@@ -280,24 +283,7 @@ header::before{
 }
 
 .journey-card{
-    position: relative;
-    isolation: isolate;
-    padding-top: 4rem;
-    overflow: hidden;
-}
-
-.journey-card-bg{
-    padding: 2rem;
-    background-color: var(--extra-light);
-    border-top-left-radius: 1rem;
-    border-top-right-radius: 1rem;
-}
-
-.journey-card-bg span{
-    display: inline-block;
-    margin-bottom: 4rem;
-    font-size: 1.75rem;
-    color: var(--primary-color);
+    padding-top: 2rem;
 }
 
 .journey-card-bg h4{
@@ -307,9 +293,6 @@ header::before{
 }
 
 .journey-card-content{
-    position: absolute;
-    top: 100%;
-    left: 0;
     width: 100%;
     height: 100%;
     padding: 2rem;
@@ -319,9 +302,6 @@ header::before{
     transition: 0.3s;
 }
 
-.journey-card:hover .journey-card-content{
-    top: 0;
-}
 
 .journey-card-content span{
     display: inline-block;
@@ -411,24 +391,14 @@ header::before{
 }
 
 .discover-card{
-    padding: 2rem 1rem;
-    text-align: center;
-    transition: 0.3s;
+    height: 100px;
+}
+
+.discover-card img{
+    height: 100%;
+    width: 100%;
     border-radius: 1rem;
-}
-
-.discover-card:hover{
-    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
-}
-
-.discover-card span{
-    display: inline-block;
-    margin-bottom: 1rem;
-    padding: 10px 15px;
-    font-size: 1.5rem;
-    color: var(--primary-color);
-    background-color: rgba(40, 135, 255, 0.1);
-    border-radius: 100%;
+    object-fit: cover;
 }
 
 .discover-card h4{
@@ -637,7 +607,6 @@ footer{
 
 @media (width > 768px) {
     nav {
-        position: static;
         padding: 2rem 1rem;
         max-width: var(--max-width);
         margin-inline: auto;
@@ -654,7 +623,7 @@ footer{
     }
 
     .nav-logo .logo{
-        color: var(--text-dark);
+        color: var(--white);
     }
 
     .nav-menu-btn{
@@ -662,7 +631,7 @@ footer{
     }
 
     .nav-links{
-        position: static;
+        position: relative;
         width: fit-content;
         padding: 0;
         flex-direction: row;
@@ -671,7 +640,8 @@ footer{
     }
 
     .nav-links a {
-        color: var(--text-dark);
+        color: var(--white);
+        cursor: pointer;
     }
 
     .nav-links a:hover{
@@ -689,8 +659,8 @@ footer{
     }
 
     .nav-btns button {
-        padding: 0.75rem 2rem;
-        background-color: var(--text-dark);
+        padding: 0.75rem 1.2rem;
+        background-color: var(--primary-color);
     }
 
     header{
@@ -748,7 +718,7 @@ footer{
      }
 
      .discover-grid{
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(4, 1fr);
      }
 
      .footer-container{
